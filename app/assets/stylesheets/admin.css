@@ -1,0 +1,5 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+.adminPanel { width: 90%; margin-bottom: 1em; background-color: blue; padding: 1em; color: #fff;}

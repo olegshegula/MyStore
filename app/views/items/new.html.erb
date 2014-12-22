@@ -1,0 +1,14 @@
+<h1>Create new item</h1>
+<div class = "my_input_view">
+<%= simple_form_for @item do |f| %>
+
+    <p><br/><%= f.input :price %></p>
+    <p><br/><%= f.input :name %></p>
+    <p><br/><%= f.input :descriptions %></p>
+    <p><br/><%= f.input :weight %></p>
+
+    <p><%= f.submit "Create Item" %></p>
+
+
+<%end%>
+</div>

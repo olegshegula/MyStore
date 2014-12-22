@@ -1,0 +1,29 @@
+<h1>Items in the store:</h1>
+
+<% if @items.empty? %>
+    <b>No items in store</b>
+<%else%>
+    <table class="table table-bordered table-condensed table-striped">
+      <tr>
+        <th>Item id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @items.each do |i| %>
+
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= link_to i.name, item_path(i) %></td>
+            <td><%= i.price %>  grn.</td>
+            <td><%= i.created_at %> </td>
+            <td><%= link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>
+            <td>Rating:<%= i.votes_count %>, <%= link_to " + " , upvote_item_path(i)%></td>
+          </tr>
+          <%end%>
+
+    </table>
+<%end%>

@@ -1,0 +1,25 @@
+<h1>Categories:</h1>
+
+
+<% if @categories.empty? %>
+    <b>No categories in store</b>
+<%else%>
+    <table class="table table-bordered table-condensed table-striped">
+      <tr>
+        <th>Id</th>
+        <th>Category name</th>
+        <th></th>
+
+      </tr>
+
+      <% @categories.each do |i| %>
+
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= i.category_name %></td>
+            <td><%= link_to "Delete", i, method: :delete, data: { confirm: "Are you sure?"} %></td>
+          </tr>
+          <%end%>
+
+    </table>
+<%end%>

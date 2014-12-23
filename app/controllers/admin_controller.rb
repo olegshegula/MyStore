@@ -12,7 +12,7 @@ class AdminController < ApplicationController
       # redirect_to item_path(@category)
       # render "items/show"
     # else
-      render "items/new"
+    #   render "items/new"
     # end
     # render text: params.inspect
   # end

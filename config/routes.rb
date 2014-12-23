@@ -63,6 +63,6 @@ Rails.application.routes.draw do
   end
 
    get "admin/users_count" => "admin#users_count"
-   get "admin/create" => "admin#new"
+
 
 end

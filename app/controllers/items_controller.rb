@@ -95,7 +95,7 @@ class ItemsController < ApplicationController
 
 
   def ad_params
-    params.require(:item).permit(:name, :price, :descriptions, :weight)
+    params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight)
   end
 
 

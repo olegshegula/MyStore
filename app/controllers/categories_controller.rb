@@ -25,12 +25,36 @@ class CategoriesController < ApplicationController
     end
   end
 
+
+  def update
+    if current_user.try(:admin?)
+    @category = Category.where(id: params[:id]).first
+    @category.update_attributes(ad_params)
+    if @category.errors.empty?
+      flash[:success] = "Category successfully updated!"
+      redirect_to action: "index"
+    else
+      render "categories/edit"
+    end
+    else render_403
+    end
+
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
     # render json: { success: true }
     redirect_to action: "index"
 
+  end
+
+  def show
+    redirect_to action: "index"
   end
 
   def ad_params

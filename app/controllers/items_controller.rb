@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_filter :find_item, only: [:show, :edit, :update, :destroy,:upvote]
-  # before_filter :check_if_admin, only: [:edit, :update, :new, :destroy]
 
   def index
     @items = Item
@@ -23,6 +22,7 @@ class ItemsController < ApplicationController
 
   # /items POST
   def create
+
      @item = Item.create(ad_params)
      if @item.errors.empty?
         redirect_to item_path(@item)
@@ -95,7 +95,7 @@ class ItemsController < ApplicationController
 
 
   def ad_params
-    params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight)
+    params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight,:avatar)
   end
 
 

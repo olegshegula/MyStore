@@ -4,11 +4,14 @@
 
 <%= simple_form_for @item do |f| %>
 
-    <p>Price: <br/><%= f.input :price %></p>
+    <p><br/><%= f.input :price, as: :string %></p>
     <p><br/><%= f.association :category, value_method: :id, label_method: :category_name, prompt: "Choose a category..."%></p>
-    <p>Name: <br/><%= f.input :name %></p>
-    <p>Description: <br/><%= f.input :descriptions %></p>
-    <p>Weight: <br/><%= f.input :weight %></p>
+    <p><br/><%= f.input :name %></p>
+    <p><br/><%= f.input :descriptions, as: :text%></p>
+    <p><br/><%= f.input :weight, as: :string %></p>
+    <p>
+    <%= f.file_field :avatar%>
+    </p>
 
     <p><%= f.submit "Save Item" %></p>
 

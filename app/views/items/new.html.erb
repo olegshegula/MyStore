@@ -1,13 +1,16 @@
 <h1>Create new item</h1>
 <div class = "my_input_view">
-<%= simple_form_for @item do |f| %>
+<%= simple_form_for @item, :html => { :multipart => true } do |f| %>
 
     <p><br/><%= f.input :price, as: :string %></p>
     <p><br/><%= f.association :category, value_method: :id, label_method: :category_name, prompt: "Choose a category..."%></p>
     <p><br/><%= f.input :name %></p>
     <p><br/><%= f.input :descriptions %></p>
-    <p><br/><%= f.input :weight, as: :string %></p>
+    <p><br/><%= f.input :weight, as: :string %>
 
+    <p>
+      <%= f.file_field :avatar%>
+    </p>
     <p><%= f.submit "Create Item" %></p>
 
 

@@ -18,7 +18,7 @@
 
           <tr>
             <td><%= i.id %></td>
-            <td><%= link_to i.name, item_path(i) %></td>
+            <td><%= link_to i.name, item_path(i) %><p><%=image_tag(i.avatar_url(:thumb)).to_s%></p></td>
             <td><%= i.price %>  grn.</td>
             <td><%= i.created_at %> </td>
             <td><%= link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>

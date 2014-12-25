@@ -6,7 +6,6 @@
 <%else%>
     <table class="table table-bordered table-condensed table-striped">
       <tr>
-        <th>Id</th>
         <th>Category name</th>
         <th></th>
         <th></th>
@@ -16,7 +15,6 @@
       <% @categories.each do |i| %>
 
           <tr>
-            <td><%= i.id %></td>
             <td><%= i.category_name %></td>
             <td><%= link_to "Edit", edit_category_path(i) %></td>
             <td><%= link_to "Delete", i, method: :delete, data: { confirm: "Are you sure?"} %></td>

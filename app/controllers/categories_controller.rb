@@ -42,7 +42,10 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    if current_user.try(:admin?)
     @category = Category.find(params[:id])
+    else render_403
+    end
   end
 
   def destroy

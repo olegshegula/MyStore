@@ -18,6 +18,8 @@ gem 'paperclip'
 gem 'carrierwave'
 gem 'devise'
 gem 'haml-rails'
+# gem 'rmagick', '2.13.1'
+gem 'mini_magick'
 
 
 # Use jquery as the JavaScript library

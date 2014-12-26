@@ -4,27 +4,39 @@
 <% if @items.empty? %>
     <b>No items in store</b>
 <%else%>
+    <div class="panel panel-default">
     <table class="table table-bordered table-condensed table-striped">
       <tr>
-        <th>Item id</th>
+        <th></th>
         <th>Name</th>
         <th>Price</th>
+        <% if current_user.try(:admin?)%>
         <th></th>
         <th></th>
+        <% end %>
         <th></th>
       </tr>
 
       <% @items.each do |i| %>
 
           <tr>
-            <td><%= i.id %></td>
-            <td><%= link_to i.name, item_path(i) %><p><%=image_tag(i.avatar_url(:thumb)).to_s%></p></td>
+            <td></td>
+            <td><%= link_to i.name, item_path(i) %>
+              <p><%=image_tag(i.avatar_url(:thumb)).to_s%></p>
+              <p><%= button_to "Buy it!", 'http://www.example.com' %></p>
+            </td>
             <td><%= i.price %>  grn.</td>
+            <% if current_user.try(:admin?)%>
             <td><%= i.created_at %> </td>
-            <td><%= link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>
+            <% end %>
+            <% if current_user.try(:admin?)%>
+                <td><%=link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>
+            <% end %>
+
             <td>Rating:<%= i.votes_count %>, <%= link_to " + " , upvote_item_path(i)%></td>
           </tr>
           <%end%>
 
     </table>
+    </div>
 <%end%>

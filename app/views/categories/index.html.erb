@@ -4,6 +4,7 @@
 <% if @categories.empty? %>
     <b>No categories in store</b>
 <%else%>
+    <p><%= link_to "Add category", new_category_path  %></p>
     <table class="table table-bordered table-condensed table-striped">
       <tr>
         <th>Category name</th>

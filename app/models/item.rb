@@ -2,6 +2,8 @@ require 'carrierwave/orm/activerecord'
 
 class Item < ActiveRecord::Base
 
+  PRICE_BORDER = 50000
+
   validates :price, { numericality: { greater_than: 0, allow_nil: true } }
   validates :descriptions, presence: true
   validates :name, presence: true
@@ -16,4 +18,6 @@ class Item < ActiveRecord::Base
   belongs_to :category
 
   mount_uploader :avatar, AvatarUploader
+
+  scope :expensive, -> { where('price > ?', PRICE_BORDER) }
 end

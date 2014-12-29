@@ -24,13 +24,18 @@ end
 
   describe "create action" do
     it "redirects to item page if validations pass" do
-      post :create, { item: { price: 35, descriptions: 'some test', name: 'Test', category_id: 2, weight: 100 },admin: true }
+      new_user = FactoryGirl.create(:user,admin:true)
+      sign_in(new_user)
+      post :create, { item: { price: 35, descriptions: 'some test', name: 'Test', category_id: 2, weight: 100 } }
       puts response.status
       expect(response).to  redirect_to(item_path(assigns(:item)))
     end
 
     it "renders new page again if validations fail" do
-      post :create, {item: { price: 0, descriptions: 'some test', name: 'Test', category_id: 2, weight: 100 },admin: true}
+      new_user = FactoryGirl.create(:user,admin:true)
+      sign_in(new_user)
+      post :create, {item: { price: 0, descriptions: 'some test', name: 'Test', category_id: 2, weight: 100 }}
+      puts response.status
       expect(response).to  render_template 'new'
     end
 

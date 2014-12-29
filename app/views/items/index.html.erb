@@ -18,12 +18,11 @@
       </tr>
 
       <% @items.each do |i| %>
-
           <tr>
             <td></td>
             <td><%= link_to i.name, item_path(i) %>
               <p><%=image_tag(i.avatar_url(:thumb)).to_s%></p>
-              <p><%= button_to "Buy it!", 'http://www.example.com' %></p>
+              <p><%= button_to "Buy it!", new_category_url,  method: :get %></p>
             </td>
             <td><%= i.price %>  grn.</td>
             <% if current_user.try(:admin?)%>
@@ -32,11 +31,9 @@
             <% if current_user.try(:admin?)%>
                 <td><%=link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>
             <% end %>
-
             <td>Rating:<%= i.votes_count %>, <%= link_to " + " , upvote_item_path(i)%></td>
           </tr>
           <%end%>
-
     </table>
     </div>
 <%end%>

@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
   before_filter :find_item, only: [:show, :edit, :update, :destroy,:upvote]
-
+  before_action :authenticate_user!
   def index
+
     @items = Item
     @items = @items.where('price >= ?',params[:price_from])           if params[:price_from]
     @items = @items.where("created_at >=?", 1.day.ago)                if params[:today]
     @items = @items.where("votes_count >=?", params[:votes_from])     if params[:votes_from]
     @items =@items.order("votes_count DESC","price")
+
     # @items = Item.where('price >= ?',params[:price_from]).order("votes_count DESC","price").limit(50)
    # @items = Item.all
    #  render text:@items.map { |i| "#{i.name}:  #{i.price}"}.join("<br/>")
@@ -22,7 +24,7 @@ class ItemsController < ApplicationController
 
   # /items POST
   def create
-
+    if current_user.try(:admin?)
      @item = Item.create(ad_params)
      if @item.errors.empty?
         redirect_to item_path(@item)
@@ -30,7 +32,10 @@ class ItemsController < ApplicationController
      else
        render "items/new"
      end
-     # render text: params.inspect
+
+    else render_403
+    end
+
   end
 
   # /items/1 GET
@@ -63,21 +68,30 @@ class ItemsController < ApplicationController
 
   #/items/1/edit GET
   def edit
+  if current_user.try(:admin?)
+  else render_403
+  end
     # @item = Item.find(params[:id])
   end
 
   #/items/new GET
   def new
+    if current_user.try(:admin?)
     @item  = Item.new
+    else render_403
+  end
   end
 
   # /items/1 DELETE
   def destroy
+    if current_user.try(:admin?)
     # @item = Item.find(params[:id])
     @item.destroy
     # render json: { success: true }
     ItemsMailer.item_destroyed(@item).deliver
     redirect_to action: "index"
+    else render_403
+    end
 
   end
 

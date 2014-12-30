@@ -9,11 +9,14 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    if current_user.try(:admin?)
     @category = Category.create(ad_params)
     if @category.errors.empty?
       redirect_to action: "index"
     else
       render "categories/new"
+    end
+    else render_403
     end
 
   end

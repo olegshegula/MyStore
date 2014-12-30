@@ -68,10 +68,7 @@ class ItemsController < ApplicationController
 
   #/items/1/edit GET
   def edit
-  if current_user.try(:admin?)
-  else render_403
-  end
-    # @item = Item.find(params[:id])
+    render_403 unless current_user.try(:admin?)
   end
 
   #/items/new GET
@@ -88,8 +85,8 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:id])
     @item.destroy
     # render json: { success: true }
-    ItemsMailer.item_destroyed(@item).deliver
     redirect_to action: "index"
+    ItemsMailer.item_destroyed(@item).deliver
     else render_403
     end
 

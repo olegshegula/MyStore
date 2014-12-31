@@ -52,11 +52,14 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    if current_user.try(:admin?)
     @category = Category.find(params[:id])
+    render_404 unless @category
     @category.destroy
     # render json: { success: true }
     redirect_to action: "index"
-
+    else render_403
+    end
   end
 
   def show

@@ -2,7 +2,7 @@
 
 
 <% if @items.empty? %>
-    <b>No items in store</b>
+    <b>No items in store!!!!</b>
 <%else%>
     <div class="panel panel-default">
     <table class="table table-bordered table-condensed table-striped">
@@ -11,6 +11,7 @@
         <th>Name</th>
         <th>Price</th>
         <% if current_user.try(:admin?)%>
+        <th></th>
         <th></th>
         <th></th>
         <% end %>
@@ -29,6 +30,7 @@
             <td><%= i.created_at %> </td>
             <% end %>
             <% if current_user.try(:admin?)%>
+                <td><%=link_to "Edit", edit_item_path(i)%></td>
                 <td><%=link_to "Delete", item_path(i), method: :delete, data: { confirm: "Are you sure?"} %></td>
             <% end %>
             <td>Rating:<%= i.votes_count %>, <%= link_to " + " , upvote_item_path(i)%></td>

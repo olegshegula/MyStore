@@ -7,4 +7,7 @@
   <li><%= @item.weight %>kg.</li>
   <li><%=image_tag(@item.avatar_url(:thumb).to_s)%></li>
   </div>
+  <% if current_user.try(:admin?)%>
+  <p><%=button_to "Edit", edit_item_path,  method: :get%></p>
+  <%end%>
 </ul>>

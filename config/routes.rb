@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
    get "admin/users_count" => "admin#users_count"
    # get "categories/:id/edit" => "categories#edit"
+
   resources :categories do
 
   end

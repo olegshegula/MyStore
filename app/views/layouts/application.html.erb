@@ -28,7 +28,12 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if current_user.try(:admin?)%>
-          <li class="active"><%=link_to "Edit Catefories", categories_path%> <span class="sr-only">(current)</span></li>
+          <li class="active"><%=link_to "Edit Categories", categories_path%> <span class="sr-only">(current)</span></li>
+          <%end%>
+        </ul>
+        <ul class="nav navbar-nav">
+          <% if current_user.try(:admin?)%>
+              <li class="active"><%=link_to "Add Item", new_item_path%> <span class="sr-only">(current)</span></li>
           <%end%>
         </ul>
         <form class="navbar-form navbar-left" role="search">

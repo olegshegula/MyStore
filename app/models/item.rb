@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   has_many :positions
   has_many :carts, through: :positions
   has_many :comments, as: :commentable
-  has_and_belongs_to_many :orders
+  # has_and_belongs_to_many :orders
   belongs_to :category
 
   mount_uploader :avatar, AvatarUploader

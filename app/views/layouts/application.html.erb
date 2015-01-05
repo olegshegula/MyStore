@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>MyStore</title>
+  <p class="navbar-text pull-right">
+    <b class="cart-text"><%= render 'layouts/cart_text' %></b>
+  </p>
   <%if current_user.try(:admin?)%>
       <p style="color: orangered">You are admin!</p>
   <% end%>
+
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
 
 
   <nav class="navbar navbar-default">
@@ -23,6 +27,7 @@
         </button>
         <ul class="navbar-brand" href="#"><%=link_to "My Store", items_path%></ul>
       </div>
+
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -72,7 +77,9 @@
 <% end %>
 
 
+
 <p class="navbar-text pull-right">
+
   <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.
 

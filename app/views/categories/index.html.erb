@@ -11,11 +11,9 @@
         <th>Category name</th>
         <th></th>
         <th></th>
-
       </tr>
 
-      <% @categories.each do |i| %>
-
+      <%  @categories.each do |i| %>
           <tr>
             <td><%= i.category_name %></td>
             <td><%= link_to "Edit", edit_category_path(i) %></td>

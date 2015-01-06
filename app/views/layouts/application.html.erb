@@ -25,7 +25,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <ul class="navbar-brand" href="#"><%=link_to "My Store", items_path%></ul>
+        <ul class="navbar-brand" href="#"><%=link_to "My Store", root_path%></ul>
       </div>
 
 
@@ -69,13 +69,13 @@
 </head>
 <body>
 
+
 <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-
 
 
 <p class="navbar-text pull-right">
@@ -89,6 +89,7 @@
       <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
       <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
+
 
   <p style="color: orangered"><%= flash[:error]%></p>
   <p style="color: green"><%= flash[:success]%></p>

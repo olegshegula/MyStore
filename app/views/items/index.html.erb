@@ -1,6 +1,5 @@
 <h1>Items in the store:</h1>
 
-
 <% if @items.empty? %>
     <b>No items in store!!!!</b>
 <%else%>
@@ -21,9 +20,11 @@
       <% @items.each do |i| %>
           <tr>
             <td></td>
-            <td><%= link_to i.name, item_path(i) %>
+            <td>
+              <%= link_to i.name, item_path(i) %>
               <p><%=image_tag(i.avatar_url(:thumb)).to_s%></p>
-              <p><%= button_to "Buy it!", new_category_url,  method: :get %></p>
+              <!--<p><%= button_to "Buy it!", new_category_url,  method: :get %></p>-->
+              <%= render "product_row", item: i, order_item: @order_item %>
             </td>
             <td><%= i.price %>  grn.</td>
             <% if current_user.try(:admin?)%>

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'order_items/create'
-
-  get 'order_items/update'
-
-  get 'order_items/destroy'
-
-  get 'carts/show'
+  # get 'order_items/create'
+  #
+  # get 'order_items/update'
+  #
+  # get 'order_items/destroy'
+  #
+  # get 'carts/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -77,5 +77,12 @@ Rails.application.routes.draw do
 
   end
 
+  resources :carts do
+
+  end
+
+  resources :order_items do
+
+  end
 
 end

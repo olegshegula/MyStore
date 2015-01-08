@@ -85,5 +85,9 @@ Rails.application.routes.draw do
 
   end
 
+  resources :orders do
+
+  end
+
 
 end

@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-xs-4">
             <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
-            <%= f.hidden_field :product_id, value: item.id %>
+            <%= f.hidden_field :item_id, value: item.id %>
           </div>
           <div class="col-xs-8 text-right">
             <div class="btn-group">
@@ -27,5 +27,7 @@
   </div>
 
 </div>
+
+
 
 

@@ -6,14 +6,21 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_order
 
+  helper_method :clean_cart
+
   def current_order
-    # if !session[:order_id].nil?
-    #   Order.find(session[:order_id])
-    # else
-    #   Order.new(user: current_user)
-    # end
-    Order.where(user: current_user).first_or_initialize
+     if !session[:order_id].nil?
+       Order.find(session[:order_id])
+     else
+       Order.new(user: current_user)
+     end
+     # Order.where(user: current_user).first_or_initialize
   end
+
+  def clean_cart
+    OrderItem.where(:order_id => current_order.id).destroy_all
+  end
+
 
   def render_403
     render file: "public/403.html", status:403
@@ -21,6 +28,10 @@ class ApplicationController < ActionController::Base
 
   def render_404
     render file: "public/404.html", status:404
+  end
+
+  def render_successful_order
+    render file: "public/success_order.html"
   end
 
   def check_if_admin

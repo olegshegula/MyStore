@@ -2,7 +2,7 @@
 
 <ul>
   <div>
-  <li><%= @item.price %>grn.</li>
+  <li><%= @item.price %>$.</li>
   <li><%= urls_to_links(urls_to_images(@item.descriptions))%></li>
   <li><%= @item.weight %>kg.</li>
   <li><%=image_tag(@item.avatar_url(:thumb).to_s)%></li>

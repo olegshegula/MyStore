@@ -7,11 +7,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    else
-      Order.new
-    end
+    # if !session[:order_id].nil?
+    #   Order.find(session[:order_id])
+    # else
+    #   Order.new(user: current_user)
+    # end
+    Order.where(user: current_user).first_or_initialize
   end
 
   def render_403

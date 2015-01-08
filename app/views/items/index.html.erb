@@ -26,7 +26,7 @@
               <!--<p><%= button_to "Buy it!", new_category_url,  method: :get %></p>-->
               <%= render "product_row", item: i, order_item: @order_item %>
             </td>
-            <td><%= i.price %>  grn.</td>
+            <td><%= i.price %>  $.</td>
             <% if current_user.try(:admin?)%>
             <td><%= i.created_at %> </td>
             <% end %>

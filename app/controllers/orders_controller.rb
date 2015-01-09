@@ -9,9 +9,9 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.update_attributes(order_params)
     if @order.errors.empty?
-      render_successful_order
       clean_cart
-    else
+      render_successful_order
+      else
       redirect_to carts_path
     end
 

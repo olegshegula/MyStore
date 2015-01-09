@@ -9,16 +9,14 @@ class ApplicationController < ActionController::Base
   helper_method :clean_cart
 
   def current_order
-     if !session[:order_id].nil?
-       Order.find(session[:order_id])
-     else
-       Order.new(user: current_user)
-     end
-     # Order.where(user: current_user).first_or_initialize
+
+      Order.where(user: current_user).first_or_initialize
+
   end
 
   def clean_cart
-    OrderItem.where(:order_id => current_order.id).destroy_all
+     OrderItem.where(:order_id => current_order.id).destroy_all
+     
   end
 
 

@@ -21,7 +21,6 @@ class OrderItem < ActiveRecord::Base
   end
 
 
-
   private
   def item_present
     if item.nil?

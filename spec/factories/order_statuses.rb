@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :order_status do
-    name "MyString"
+    name "In Progress"
   end
 
 end

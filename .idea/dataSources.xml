@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="355232893">
+  <component name="DataSourceManagerImpl" format="xml" hash="1615611969">
     <data-source source="LOCAL" name="PostgreSQL - my_store_development@localhost" uuid="c0351319-3833-4578-a98d-6430c1289a46">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/my_store_development</jdbc-url>
+      <user-name>oleg</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails my_store: development" uuid="20972197-97c7-4cd3-837e-c3a2a4237ff9">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:my_store_development</jdbc-url>
+      <user-name>oleg</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails my_store: test" uuid="6a02b38b-cb8a-4d15-b68a-6a4bc0496024">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:my_store_testing</jdbc-url>
+      <user-name>oleg</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails my_store: production" uuid="e4b2242a-cd17-4c9b-9c64-b1cc93e523f3">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:my_store</jdbc-url>
       <user-name>oleg</user-name>
       <libraries />
     </data-source>

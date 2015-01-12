@@ -1,0 +1,13 @@
+Order#: <%= @order.id%> has just been successful created!
+
+Your order is:
+<%= @ordered_items.each do |i| %>
+
+  Name:  <%=i.item_id%>
+  Price:  <%=i.unit_price%>
+  Count:  <%=i.quantity%>
+  Total:  <%=i.total_price%>
+
+  Total Sum:<%= %>
+
+<%end%>

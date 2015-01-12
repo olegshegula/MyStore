@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1615611969">
+  <component name="DataSourceManagerImpl" format="xml" hash="208894465">
     <data-source source="LOCAL" name="PostgreSQL - my_store_development@localhost" uuid="c0351319-3833-4578-a98d-6430c1289a46">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -28,6 +28,12 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:my_store</jdbc-url>
       <user-name>oleg</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails ShoppingCartExampleApp: development" uuid="113547c6-89ed-47b4-93fc-392767207d61">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../ShoppingCartExampleApp/db/development.sqlite3</jdbc-url>
       <libraries />
     </data-source>
   </component>

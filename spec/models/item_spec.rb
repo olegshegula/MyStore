@@ -19,5 +19,6 @@ describe Item do
       expect(new_item.weight).to eq(10)
       expect(new_item.real).to eq true
       expect(new_item.name).to eq("Item 1")
+     
   end
 end

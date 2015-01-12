@@ -2,11 +2,11 @@ class OrderItem < ActiveRecord::Base
   belongs_to :item
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validate :item_present
-  validate :order_present
+   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+    validate :item_present
+    validate :order_present
 
-  before_save :finalize
+   before_save :finalize
 
   def unit_price
     if persisted?

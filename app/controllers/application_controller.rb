@@ -12,14 +12,19 @@ class ApplicationController < ActionController::Base
 
       Order.where(user: current_user).first_or_initialize
 
-
   end
+
 
   def clean_cart
      OrderItem.where(:order_id => current_order.id).destroy_all
 
   end
 
+  def find_name(id)
+    @items = Item.all
+    name = @items.find_by id: id
+    name.name
+  end
 
   def render_403
     render file: "public/403.html", status:403

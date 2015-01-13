@@ -9,11 +9,13 @@ class OrdersController < ApplicationController
     @order = current_order
     @ordered_items  = OrderItem.where(:order_id => current_order.id)
     @ordered_items.map {}
+    @items = Item.all
+
     @order.update_attributes(order_params)
     if @order.errors.empty?
       clean_cart
       render_successful_order
-      OrdersMailer.order_successful(@order,@ordered_items).deliver
+      OrdersMailer.order_successful(@order,@ordered_items, @items).deliver
       else
       redirect_to carts_path
     end

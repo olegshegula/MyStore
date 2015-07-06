@@ -10,9 +10,9 @@ class ItemsController < ApplicationController
     # @items =@items.order("votes_count DESC","price")
 
     @items = if params[:category_ids]
-      Item.where(:category_id => params[:category_ids])
+      Item.where(:category_id => params[:category_ids]).page(params[:page]).per(5)
     else
-      Item.all
+      Item.all.page(params[:page]).per(5)
     end
 
 

@@ -1,3 +1,5 @@
+<%= paginate @items %>
+
 <div>Choose categories:</div>
 <%= form_tag items_path, method: :get do  %>
 <% @categories.each do |category| %>
@@ -52,4 +54,7 @@
           <%end%>
     </table>
     </div>
+
 <%end%>
+
+<%= paginate @items %>

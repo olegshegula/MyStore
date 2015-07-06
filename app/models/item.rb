@@ -22,4 +22,5 @@ class Item < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   scope :expensive, -> { where('price > ?', PRICE_BORDER) }
+
 end

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_filter :find_item, only: [:show, :edit, :update, :destroy,:upvote]
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
   def index
 
     # @items = Item
@@ -11,8 +12,8 @@ class ItemsController < ApplicationController
 
     @items = if params[:category_ids]
       Item.where(:category_id => params[:category_ids]).page(params[:page]).per(5)
-    else
-      Item.all.page(params[:page]).per(5)
+        else
+      Item.all.page(params[:page]).per(5).order(sort_column + " " + sort_direction)
     end
 
 
@@ -120,5 +121,13 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight,:avatar)
   end
 
+  private
 
+  def sort_column
+    Item.column_names.include?(params[:sort]) ? params[:sort] : "price"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

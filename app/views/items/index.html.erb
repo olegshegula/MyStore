@@ -23,7 +23,7 @@
       <tr>
         <th></th>
         <th>Name</th>
-        <th>Price</th>
+        <th><%= sortable "price" %></th>
         <% if current_user.try(:admin?)%>
         <th></th>
         <th></th>

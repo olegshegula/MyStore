@@ -9,14 +9,21 @@ class ItemsController < ApplicationController
     # @items = @items.where("votes_count >=?", params[:votes_from])     if params[:votes_from]
     # @items =@items.order("votes_count DESC","price")
 
+    @items = if params[:category_ids]
+      Item.where(:category_id => params[:category_ids])
+    else
+      Item.all
+    end
 
-    @items = Item.all
+
     @order_item = current_order.order_items.new
+    @categories = Category.all
 
     # @items = Item.where('price >= ?',params[:price_from]).order("votes_count DESC","price").limit(50)
    # @items = Item.all
    #  render text:@items.map { |i| "#{i.name}:  #{i.price}"}.join("<br/>")
   end
+
 
   #This is a test method
   # def create

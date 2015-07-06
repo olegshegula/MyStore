@@ -7,8 +7,9 @@ class OrdersController < ApplicationController
 
   def update
     @order = current_order
-    @ordered_items  = OrderItem.where(:order_id => current_order.id)
-    @ordered_items.map {}
+    # @order_items = OrderItem.all
+    @ordered_items  = OrderItem.where(:order_id => current_order.id).load
+
     @items = Item.all
 
     @order.update_attributes(order_params)

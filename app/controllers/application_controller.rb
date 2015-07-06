@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def find_name(id)
-    @items = Item.all
-    name = @items.find_by id: id
-    name.name
-  end
+  # def find_name(id)
+  #   @items = Item.all
+  #   name = @items.find_by id: id
+  #   name.name
+  # end
 
   def render_403
     render file: "public/403.html", status:403

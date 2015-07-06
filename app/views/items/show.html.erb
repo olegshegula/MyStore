@@ -1,13 +1,28 @@
 <h1><%= @item.name %></h1>
 
-<ul>
-  <div>
-  <li><%= @item.price %>$.</li>
-  <li><%= urls_to_links(urls_to_images(@item.descriptions))%></li>
-  <li><%= @item.weight %>kg.</li>
-  <li><%=image_tag(@item.avatar_url(:thumb).to_s)%></li>
-  </div>
+
+    <table class="table table-bordered table-condensed table-striped">
+      <tr>
+        <th>More about item:</th>
+      </tr>
+
+      <tr>
+        <td><%= @item.price %>$.</td>
+      </tr>
+      <tr>
+        <td><p><%= urls_to_links(urls_to_images(@item.descriptions))%></p></td>
+      </tr>
+      <tr>
+        <td><%= @item.weight %>kg.</td>
+      </tr>
+      <tr>
+        <td><p><%=image_tag(@item.avatar_url(:thumb).to_s)%></p></td>
+      </tr>
+    </table>
+
   <% if current_user.try(:admin?)%>
   <p><%=button_to "Edit", edit_item_path,  method: :get%></p>
   <%end%>
-</ul>>
+
+
+

@@ -20,7 +20,7 @@ gem 'devise'
 gem 'haml-rails'
 # gem 'rmagick', '2.13.1'
 gem 'mini_magick'
-
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -20,4 +20,8 @@ describe Order do
     expect(o.order_status_id).to eq 1
   end
 
+  it "makes sure that subtotal method works correct" do
+    expect(o.subtotal).to eq 0
+  end
+
 end

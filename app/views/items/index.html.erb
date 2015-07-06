@@ -1,4 +1,17 @@
+<div>Choose categories:</div>
+<%= form_tag items_path, method: :get do  %>
+<% @categories.each do |category| %>
+    <li>
+      <%= check_box_tag 'category_ids[]', category.id -%>
+      <%= category.category_name -%>
+    </li>
+<%end%>
+    <%= submit_tag  'Search'%>
+<% end %>
+
+
 <h1>Items in the store:</h1>
+
 
 <% if @items.empty? %>
     <b>No items in store!!!!</b>
@@ -12,7 +25,7 @@
         <% if current_user.try(:admin?)%>
         <th></th>
         <th></th>
-        <th></th>
+        <th></th>1
         <% end %>
         <th></th>
       </tr>

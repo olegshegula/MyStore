@@ -1,10 +1,10 @@
 Order#: <%= @order.id%> has just been successful created!
 Your order is:
-<%= @ordered_items.each do |i| %>
+<% @ordered_items.each do |i| %>
   Name:   <%= (@items.find_by id: i.item_id).name%>
   Price:  <%=i.unit_price%>
   Count:  <%=i.quantity%>
   Subtotal:  <%=i.total_price%>
 <%end%>
 
-Total: <%= %>
+Total: <%= @order.subtotal%>

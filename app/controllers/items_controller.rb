@@ -10,12 +10,16 @@ class ItemsController < ApplicationController
     # @items = @items.where("votes_count >=?", params[:votes_from])     if params[:votes_from]
     # @items =@items.order("votes_count DESC","price")
 
-    @items = if params[:category_ids]
-      Item.where(:category_id => params[:category_ids]).page(params[:page]).per(5)
-        else
-      Item.all.page(params[:page]).per(5).order(sort_column + " " + sort_direction)
-    end
 
+    if params[:search]
+      @items = Item.search(params[:search]).page(params[:page]).per(5)
+    else
+      @items = if params[:category_ids]
+        Item.where(:category_id => params[:category_ids]).page(params[:page]).per(5)
+        else
+        Item.all.page(params[:page]).per(5).order(sort_column + " " + sort_direction)
+      end
+    end
 
     @order_item = current_order.order_items.new
     @categories = Category.all
@@ -131,3 +135,4 @@ class ItemsController < ApplicationController
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
+

@@ -23,4 +23,7 @@ class Item < ActiveRecord::Base
 
   scope :expensive, -> { where('price > ?', PRICE_BORDER) }
 
+  def self.search(query)
+    where("name like ?", "%#{query}%")
+  end
 end

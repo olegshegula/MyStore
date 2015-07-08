@@ -24,19 +24,8 @@ class ItemsController < ApplicationController
     @order_item = current_order.order_items.new
     @categories = Category.all
 
-    # @items = Item.where('price >= ?',params[:price_from]).order("votes_count DESC","price").limit(50)
-   # @items = Item.all
-   #  render text:@items.map { |i| "#{i.name}:  #{i.price}"}.join("<br/>")
+    @recommended = Item.where('recommended_item > 0').order(:recommended_item).limit(3)
   end
-
-
-  #This is a test method
-  # def create
-  #   @item = Item.create(params[:@item])
-  #   p params
-   # @item  = Item.create(name: params[:name],descriptions: params[:descriptions], price: params[:price],real:params[:real],weight:params[:weight])
-   #  render text: "#{@item.id}: #{@item.name}(#{@item.new_record?})"
-  # end
 
   # /items POST
   def create
@@ -122,7 +111,7 @@ class ItemsController < ApplicationController
 
 
   def ad_params
-    params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight,:avatar)
+    params.require(:item).permit(:name, :price, :descriptions,:category_id, :weight,:avatar,:recommended_item)
   end
 
   private

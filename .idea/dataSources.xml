@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="208894465">
+  <component name="DataSourceManagerImpl" format="xml" hash="2661896565">
     <data-source source="LOCAL" name="PostgreSQL - my_store_development@localhost" uuid="c0351319-3833-4578-a98d-6430c1289a46">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

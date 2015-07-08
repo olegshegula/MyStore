@@ -9,13 +9,9 @@ class Item < ActiveRecord::Base
   validates :name, presence: true
   validates :category_id, presence: true
   validates :weight, presence:true
-  # validates :avatar, presence: true
-
-  # has_and_belongs_to_many :carts
-  # has_many :positions
-  # has_many :carts, through: :positions
+  #validates :recommended_item,numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
   has_many :comments, as: :commentable
-  # has_and_belongs_to_many :orders
+
   belongs_to :category
   has_many :order_items
 

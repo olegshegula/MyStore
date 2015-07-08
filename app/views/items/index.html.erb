@@ -1,5 +1,38 @@
 <%= paginate @items %>
+<h2>Recommended items:</h2>
+<% if @recommended.empty? %>
+    <b>No recommended items in the store!!!!</b>
+<%else%>
+    <div class="panel panel-default">
+      <table class="table table-bordered table-condensed table-striped">
 
+        <% @recommended.each_slice(2) do |i, j| %>
+            <tr>
+              <td></td>
+              <td>
+                <%= link_to i.name, item_path(i) %>
+                <p><%=image_tag(i.avatar_url(:thumb)).to_s%></p>
+                <%= button_to "Buy it!", new_category_url,  method: :get %></p>
+                <%= render "product_row", item: i, order_item: @order_item %>
+              </td>
+
+
+              <td></td>
+              <td>
+                <% if j %>
+                <%= link_to j.name, item_path(j) %>
+                <p><%=image_tag(j.avatar_url(:thumb)).to_s%></p>
+                <%= button_to "Buy it!", new_category_url,  method: :get %></p>
+                <%= render "product_row", item: j, order_item: @order_item %>
+                <% end%>
+              </td>
+
+            </tr>
+        <%end%>
+      </table>
+    </div>
+
+<% end %>
 <div>Choose categories:</div>
 <%= form_tag items_path, method: :get do  %>
 <% @categories.each do |category| %>
